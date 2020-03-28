@@ -1,0 +1,6 @@
+black
+boto3
+click
+requests
+pyinstaller
+pytest
