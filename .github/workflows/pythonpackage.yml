@@ -10,7 +10,8 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  # a separate job would be wise to run tests and checks
+  build_linux:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -47,7 +48,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup Python 3
+    - name: Set up Python 3
       run: |
         brew install python3
     - name: Create Python virtual environment
@@ -65,4 +66,30 @@ jobs:
       uses: actions/upload-artifact@v1.0.0
       with:
         name: demo-cli MacOS
+        path: ./dist/demo-cli
+
+  build_windows:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    - name: Create Python virtual environment
+      run: |
+        python3 -m venv .venv
+        source .venv/bin/activate
+    - name: Install dependencies
+      run: |
+        pip3 install -r requirements.txt
+    - name: Package app
+      run: |
+        pip3 install .
+        pyinstaller demo/cli.py --name demo-cli --onefile --add-data=demo/version:demo/version --hidden-import="pkg_resources.py2_warn"
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: demo-cli Windows
         path: ./dist/demo-cli
