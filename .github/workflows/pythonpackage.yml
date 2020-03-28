@@ -88,7 +88,7 @@ jobs:
     - name: Package app
       run: |
         pip install .
-        pyinstaller demo/cli.py --name demo-cli --onefile --add-data=demo\version:demo\version --hidden-import="pkg_resources.py2_warn"
+        pyinstaller demo/cli.py --name demo-cli --onefile --add-data=demo\version;demo\version --hidden-import="pkg_resources.py2_warn"
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
