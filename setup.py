@@ -23,11 +23,7 @@ setup(
     license="MIT",
     version=version(),
     packages=find_packages(exclude=["tests"]),
-    install_requires=[
-        "Click>=7.0",
-        "requests>=2.19.1",
-        "boto3>=1.9.188",
-    ],
+    install_requires=["Click>=7.0", "requests>=2.19.1", "boto3>=1.9.188",],
     setup_requires=["pytest-runner"],
     tests_require=["pytest", "pytest-mock"],
     entry_points="""
