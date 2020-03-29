@@ -79,3 +79,17 @@ jobs:
         with:
           name: demo-cli-${{ matrix.os }}
           path: dist${{ matrix.slash }}${{ matrix.artifact_name }}
+
+  publish_executable:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v1
+        with:
+          name: demo-cli-linux-latest
+      - uses: actions/download-artifact@v1
+        with:
+          name: demo-cli-macos-latest
+      - uses: actions/download-artifact@v1
+        with:
+          name: demo-cli-windows-latest
+      - run: ls -l .
