@@ -24,7 +24,7 @@ jobs:
             path_separator: ":"
           - os: windows-latest
             artifact_name: demo-cli.exe
-            slash: "\\"
+            slash: "\"
             path_separator: ";"
       fail-fast: true
     steps:
@@ -40,7 +40,7 @@ jobs:
       - name: Package app
         run: |
           pip install .
-          pyinstaller demo${{ matrix.slash }}cli.py --name demo-cli --onefile --add-data=demo${{ matrix.slash }}version${{ matrix.path_separator }}demo${{ matrix.slash }}version --hidden-import="pkg_resources.py2_warn"
+          pyinstaller demo${{ matrix.slash }}cli.py --name demo-cli --onefile --add-data="demo/version${{ matrix.path_separator }}demo/version" --hidden-import="pkg_resources.py2_warn"
       - name: Upload artifact
         uses: actions/upload-artifact@v1.0.0
         with:
