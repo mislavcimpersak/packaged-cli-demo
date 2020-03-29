@@ -24,7 +24,7 @@ jobs:
             path_separator: ":"
           - os: windows-latest
             artifact_name: demo-cli.exe
-            slash: "\"
+            slash: "\\"
             path_separator: ";"
       fail-fast: true
     steps:
