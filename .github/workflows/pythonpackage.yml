@@ -21,7 +21,7 @@ jobs:
         python-version: 3.7
     - name: Create Python virtual environment
       run: |
-        python3 -m venv .venv
+        python -m venv .venv
         source .venv/bin/activate
     - name: Install dependencies
       run: |
@@ -48,15 +48,15 @@ jobs:
         python-version: 3.7
     - name: Create Python virtual environment
       run: |
-        python3 -m venv .venv
+        python -m venv .venv
         source .venv/bin/activate
     - name: Install dependencies
       run: |
-        python3 -m pip install --upgrade pip
-        pip3 install -r requirements.txt
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
     - name: Package app
       run: |
-        pip3 install .
+        pip install .
         pyinstaller demo/cli.py --name demo-cli --onefile --add-data=demo/version:demo/version --hidden-import="pkg_resources.py2_warn"
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
@@ -75,14 +75,14 @@ jobs:
         python-version: 3.7
     - name: Create Python virtual environment
       run: |
-        python3 -m venv .venv
+        python -m venv .venv
         source .venv/bin/activate
     - name: Install dependencies
       run: |
-        pip3 install -r requirements.txt
+        pip install -r requirements.txt
     - name: Package app
       run: |
-        pip3 install .
+        pip install .
         pyinstaller demo/cli.py --name demo-cli --onefile --add-data=demo/version:demo/version --hidden-import="pkg_resources.py2_warn"
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
