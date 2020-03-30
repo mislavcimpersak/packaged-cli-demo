@@ -77,7 +77,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v1.0.0
         with:
-          name: demo-cli-${{ matrix.os }}
+          name: demo-cli-${{ runner.os }}
           path: dist${{ matrix.slash }}${{ matrix.artifact_name }}
 
   publish_executable:
@@ -86,11 +86,11 @@ jobs:
     steps:
       - uses: actions/download-artifact@v1
         with:
-          name: demo-cli-ubuntu-latest
+          name: demo-cli-Linux
       - uses: actions/download-artifact@v1
         with:
-          name: demo-cli-macos-latest
+          name: demo-cli-macOS
       - uses: actions/download-artifact@v1
         with:
-          name: demo-cli-windows-latest
+          name: demo-cli-Windows
       - run: ls -l .
