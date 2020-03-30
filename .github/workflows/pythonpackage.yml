@@ -34,10 +34,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-16.04, macos-latest, windows-latest]
         python: [3.7]
         include:
-          - os: ubuntu-latest
+          - os: ubuntu-16.04
             artifact_name: demo-cli
             slash: "/"
             path_separator: ":"
