@@ -84,13 +84,13 @@ jobs:
     runs-on: ubuntu-latest
     needs: [check_and_test, build]
     steps:
-      - uses: actions/download-artifact@v1
+      - uses: actions/download-artifact@v4.1.7
         with:
           name: demo-cli-Linux
-      - uses: actions/download-artifact@v1
+      - uses: actions/download-artifact@v4.1.7
         with:
           name: demo-cli-macOS
-      - uses: actions/download-artifact@v1
+      - uses: actions/download-artifact@v4.1.7
         with:
           name: demo-cli-Windows
       - run: ls -l .
